@@ -11,6 +11,7 @@ public class Funcionario {
 		this.nome = nome;
 	}
 	
+	// Construtor Padrão / Default
 	public Funcionario() {
 		
 	}
