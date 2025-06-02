@@ -1,6 +1,12 @@
 package br.dev.rogerribeiro.tarefas;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import br.dev.rogerribeiro.tarefas.dao.FuncionarioDAO;
+import br.dev.rogerribeiro.tarefas.model.Funcionario;
 import br.dev.rogerribeiro.tarefas.ui.FrameFuncionario;
+import br.dev.rogerribeiro.tarefas.ui.FrameFuncionarioList;
 
 //import java.io.BufferedReader;
 //import java.io.BufferedWriter;
@@ -19,7 +25,22 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		new FrameFuncionario();
+		new FrameFuncionarioList();
+		
+		
+		
+//		FuncionarioDAO dao = new FuncionarioDAO();
+//		List<Funcionario> funcionarios = dao.listar();
+//		
+//		for(Funcionario f : funcionarios) {
+//			System.out.println(f.getNome());
+//			System.out.println(f.getCargo());
+//			System.out.println("------------");
+//		}
+		
+		
+		
+		//new FrameFuncionario();
 		
 //		Funcionario f = new Funcionario();
 //		f.setNome("Priscila Duarte");
