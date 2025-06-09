@@ -26,12 +26,12 @@ public class FrameFuncionario {
 	private JTextField txtSalario;
 	private JButton btnSalvar;
 	private JButton btnSair;
-
-	public FrameFuncionario(JFrame frame) {
+	//mudei para jdialog
+	public FrameFuncionario(JDialog frame) {
 		criarTela(frame);
 	}
 
-	private void criarTela(JFrame frame)
+	private void criarTela(JDialog frame)
 
 	{
 		JDialog tela = new JDialog(frame, true);

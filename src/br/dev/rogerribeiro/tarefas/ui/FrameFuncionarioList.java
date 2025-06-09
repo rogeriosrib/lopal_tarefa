@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.util.List;
 
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
@@ -29,11 +30,11 @@ public class FrameFuncionarioList {
 	public FrameFuncionarioList() {
 		criarTela();
 	}
-
+	//mudei para jdialog
 	private void criarTela() {
-		JFrame tela = new JFrame();
+		JDialog tela = new JDialog();
 		tela.setSize(500, 500);
-		tela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		tela.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		tela.setLayout(null);
 		tela.setLocationRelativeTo(null);
 		tela.setTitle("Lista de funcionários");

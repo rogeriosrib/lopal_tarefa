@@ -22,8 +22,8 @@ public class FuncionarioDAO {
 	public void gravar() {
 		try {
 			FileFactory ff = new FileFactory();
-			ff.getBufferWriter().write(funcionario.toString());
-			ff.getBufferWriter().flush();
+			ff.getBufferWriterFuncionarios().write(funcionario.toString());
+			ff.getBufferWriterFuncionarios().flush();
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -37,7 +37,7 @@ public class FuncionarioDAO {
 
 		try {
 			FileFactory ff = new FileFactory();
-			BufferedReader br = ff.getBufferedReader();
+			BufferedReader br = ff.getBufferedReaderFuncionarios();
 
 			String linha = "";
 
