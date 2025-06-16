@@ -8,11 +8,11 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 
 public class FrameGerenciador {
-	
+
 	private JButton btnFuncionarios;
 	private JButton btnTarefas;
-	
-	public FrameGerenciador(){
+
+	public FrameGerenciador() {
 		criarTela();
 	}
 
@@ -25,38 +25,36 @@ public class FrameGerenciador {
 		tela.setLayout(null);
 		tela.setLocationRelativeTo(null);
 		tela.setVisible(true);
-		
+
 		btnFuncionarios = new JButton("Funcionários");
 		btnFuncionarios.setBounds(30, 45, 120, 30);
-		
+
 		btnTarefas = new JButton("Tarefas");
-		btnTarefas.setBounds(190, 45, 120, 30);;
-		
-		
+		btnTarefas.setBounds(190, 45, 120, 30);
+		;
+
 		Container painel = tela.getContentPane();
 		painel.add(btnFuncionarios);
 		painel.add(btnTarefas);
-		
+
 		btnFuncionarios.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new FrameFuncionarioList();
-				
-				
+				new FrameFuncionarioList(tela);
+
 			}
 		});
-		
+
 		btnTarefas.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new FrameTarefaList();
-				
+				new FrameTarefaList(tela);
+
 			}
 		});
-		
-		
+
 	}
 
 }

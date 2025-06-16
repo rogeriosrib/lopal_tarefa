@@ -26,21 +26,21 @@ public class FrameFuncionario {
 	private JTextField txtSalario;
 	private JButton btnSalvar;
 	private JButton btnSair;
-	//mudei para jdialog
-	public FrameFuncionario(JDialog frame) {
-		criarTela(frame);
+
+	public FrameFuncionario(JDialog cadastro) {
+		criarTela(cadastro);
 	}
 
-	private void criarTela(JDialog frame)
+	private void criarTela(JDialog cadastro)
 
 	{
-		JDialog tela = new JDialog(frame, true);
+		JDialog tela = new JDialog(cadastro, true);
 		tela.setTitle("Cadastro");
 		tela.setSize(400, 400);
 		tela.setResizable(false);
 		tela.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		tela.setLayout(null);
-		tela.setLocationRelativeTo(frame);
+		tela.setLocationRelativeTo(cadastro);
 
 		Container painel = tela.getContentPane();
 
@@ -87,10 +87,8 @@ public class FrameFuncionario {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				// JOptionPane.showMessageDialog(tela, "Você fechou sem querer hahahaha!",
-				// "Fechar", JOptionPane.ERROR_MESSAGE);
-				int resposta = JOptionPane.showConfirmDialog(tela, "Confirma a saída do sistema?");
-				System.out.println(resposta);
+				int resposta = JOptionPane.showConfirmDialog(null, "Deseja continuar?", "Confirmação",
+						JOptionPane.YES_NO_OPTION);
 				if (resposta == 0) {
 					tela.dispose();
 				}
@@ -99,15 +97,20 @@ public class FrameFuncionario {
 		});
 
 		btnSalvar.addActionListener(new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Funcionario f = new Funcionario(txtCargo.getText(), txtNome.getText(),
-						Double.parseDouble(txtSalario.getText()));
-				FuncionarioDAO dao = new FuncionarioDAO(f);
-				dao.gravar();
-				JOptionPane.showMessageDialog(tela, txtNome.getText() + " gravado com sucesso!", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);
-				limparFormulario();
+				try {
+					Funcionario f = new Funcionario(txtCargo.getText(), txtNome.getText(),
+							Double.parseDouble(txtSalario.getText()));
+					FuncionarioDAO dao = new FuncionarioDAO(f);
+					dao.gravar();
+					JOptionPane.showMessageDialog(tela, txtNome.getText() + " gravado com sucesso!", "Sucesso!",
+							JOptionPane.INFORMATION_MESSAGE);
+					limparFormulario();
+				} catch (Exception ex) {
+					JOptionPane.showMessageDialog(tela, "Ocorreu um erro: " + ex.getMessage(), "Erro",
+							JOptionPane.ERROR_MESSAGE);
+				}
 			}
 		});
 

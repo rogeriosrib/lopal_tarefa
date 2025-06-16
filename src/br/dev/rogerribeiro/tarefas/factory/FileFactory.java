@@ -5,11 +5,14 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Paths;
 
 public class FileFactory {
 
-	private String arquivoFuncionarios = "C:\\Users\\25132662\\ProjetoTarefas\\funcionarios.csv";
-	private String arquivoTarefas = "C:\\Users\\25132662\\ProjetoTarefas\\funcionarios.csv";
+	// utiliza o diretorio ja feito no repositorio, sem precisar mudar independente
+	// da maquina
+	private String arquivoFuncionarios = Paths.get("ArquivosGerenciador", "funcionarios.csv").toString();
+	private String arquivoTarefas = Paths.get("ArquivosGerenciador", "tarefas.csv").toString();
 
 	private FileWriter fwFuncionarios;
 	private BufferedWriter bwFuncionarios;
@@ -25,14 +28,14 @@ public class FileFactory {
 		// É necessário para escrever no arquivo
 		fwFuncionarios = new FileWriter(arquivoFuncionarios, true);
 		bwFuncionarios = new BufferedWriter(fwFuncionarios);
-		
+
 		fwTarefas = new FileWriter(arquivoTarefas, true);
 		bwTarefas = new BufferedWriter(fwTarefas);
 
 		// É necessário para ler arquivo
 		frFuncionarios = new FileReader(arquivoFuncionarios);
 		brFuncionarios = new BufferedReader(frFuncionarios);
-		
+
 		frTarefas = new FileReader(arquivoTarefas);
 		brTarefas = new BufferedReader(frTarefas);
 	}
@@ -40,7 +43,7 @@ public class FileFactory {
 	public BufferedWriter getBufferWriterFuncionarios() {
 		return bwFuncionarios;
 	}
-	
+
 	public BufferedWriter getBufferWriterTarefas() {
 		return bwTarefas;
 	}
@@ -48,7 +51,7 @@ public class FileFactory {
 	public BufferedReader getBufferedReaderFuncionarios() {
 		return brFuncionarios;
 	}
-	
+
 	public BufferedReader getBufferedReaderTarefas() {
 		return brTarefas;
 	}

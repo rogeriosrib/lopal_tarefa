@@ -8,7 +8,6 @@ public class Funcionario {
 	private String matricula;
 	private String cargo;
 	private double salario;
-	
 
 	// método construtor
 	public Funcionario(String nome) {

@@ -49,16 +49,17 @@ public class tarefasDAO {
 				System.out.println(linha);
 
 				// Criando vetor que guarda cada informação antes da ","
-				if (linha != null){
+				if (linha != null) {
 					String TarefaStr[] = linha.split(",");
 
-					// Criando um objeto funcionario
+					// Criando um objeto tarefa
 					Tarefa tarefa = new Tarefa();
-					tarefa.setResponsavel(TarefaStr[6]);
+					tarefa.setCodigo(TarefaStr[0]);
+					tarefa.setTitulo(TarefaStr[1]);
+					tarefa.setResponsavel(TarefaStr[7]);
 
 					tarefas.add(tarefa);
 				}
-				
 
 			}
 

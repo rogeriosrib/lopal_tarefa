@@ -13,6 +13,7 @@ public class FuncionarioDAO {
 	private Funcionario funcionario;
 
 	public FuncionarioDAO() {
+		this.getNomesFuncionarios();
 	}
 
 	public FuncionarioDAO(Funcionario funcionario) {
@@ -49,7 +50,7 @@ public class FuncionarioDAO {
 				System.out.println(linha);
 
 				// Criando vetor que guarda cada informação antes da ","
-				if (linha != null){
+				if (linha != null) {
 					String funcionarioStr[] = linha.split(",");
 
 					// Criando um objeto funcionario
@@ -61,7 +62,6 @@ public class FuncionarioDAO {
 
 					funcionarios.add(funcionario);
 				}
-				
 
 			}
 
@@ -72,6 +72,17 @@ public class FuncionarioDAO {
 			return null;
 		}
 
+	}
+
+	public String[] getNomesFuncionarios() {
+		List<Funcionario> funcionarios = listar(); // Reaproveita meu método para usar no combobox
+		String[] nomes = new String[funcionarios.size()];
+
+		for (int i = 0; i < funcionarios.size(); i++) {
+			nomes[i] = funcionarios.get(i).getNome();
+		}
+
+		return nomes;
 	}
 
 }

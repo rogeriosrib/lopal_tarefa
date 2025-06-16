@@ -4,8 +4,9 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class Tarefa {
-	
+
 	private String titulo;
+	private String codigo;
 	private String descricao;
 	private LocalDate data;
 	private int prazo;
@@ -18,6 +19,14 @@ public class Tarefa {
 
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
+	}
+
+	public String getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
 	}
 
 	public String getDescricao() {
@@ -45,7 +54,7 @@ public class Tarefa {
 	}
 
 	public LocalDate conclusao() {
-		LocalDate entrega = LocalDate.now();
+		LocalDate entrega = data;
 		return entrega.plusDays(prazo);
 	}
 
@@ -63,6 +72,13 @@ public class Tarefa {
 
 	public void setResponsavel(String responsavel) {
 		this.responsavel = responsavel;
+	}
+
+	@Override
+	public String toString() {
+		String tarefa = codigo + "," + titulo + "," + descricao + "," + data + "," + prazo + "," + conclusao() + ","
+				+ status + "," + responsavel + "\n";
+		return tarefa;
 	}
 
 }

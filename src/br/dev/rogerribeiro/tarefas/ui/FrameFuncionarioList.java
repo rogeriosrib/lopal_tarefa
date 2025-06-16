@@ -11,6 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -26,17 +27,19 @@ public class FrameFuncionarioList {
 	private JScrollPane scrollFuncionarios;
 	private DefaultTableModel modelFuncionarios;
 	private String[] colunas = { "CÓDIGO", "NOME", "CARGO" };
+	private JButton btnSair;
 
-	public FrameFuncionarioList() {
-		criarTela();
+	public FrameFuncionarioList(JFrame gerenciador) {
+		criarTela(gerenciador);
 	}
-	//mudei para jdialog
-	private void criarTela() {
-		JDialog tela = new JDialog();
+
+	// ja mudei para jdialog
+	private void criarTela(JFrame gerenciador) {
+		JDialog tela = new JDialog(gerenciador, true);
 		tela.setSize(500, 500);
 		tela.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		tela.setLayout(null);
-		tela.setLocationRelativeTo(null);
+		tela.setLocationRelativeTo(gerenciador);
 		tela.setTitle("Lista de funcionários");
 		tela.setResizable(false);
 
@@ -62,35 +65,54 @@ public class FrameFuncionarioList {
 		scrollFuncionarios.setBounds(10, 60, 460, 300);
 
 		carregarDados();
-		
+
 		btnCadastro = new JButton("Cadastrar");
 		btnCadastro.setBounds(10, 380, 200, 40);
-		
+
 		btnCadastro.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+
 				new FrameFuncionario(tela);
 				carregarDados();
-				
+
 			}
 		});
-		
+
+		btnSair = new JButton("Sair");
+		btnSair.setBounds(220, 380, 80, 40);
+
+		btnSair.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				int resposta = JOptionPane.showConfirmDialog(null, "Deseja continuar?", "Confirmação",
+						JOptionPane.YES_NO_OPTION);
+				if (resposta == 0) {
+					tela.dispose();
+
+				}
+
+			}
+		});
+
 		painel.add(labelTitulo);
 		painel.add(scrollFuncionarios);
 		painel.add(btnCadastro);
+		painel.add(btnSair);
 
 		tela.setVisible(true);
-		
+
 	}
 
 	private void carregarDados() {
 		FuncionarioDAO dao = new FuncionarioDAO();
 		List<Funcionario> funcionarios = dao.listar();
-		
+
 		Object[][] dados = new Object[funcionarios.size()][3];
-		
+
 		int i = 0;
 		for (Funcionario f : funcionarios) {
 			dados[i][0] = f.getMatricula();
@@ -98,7 +120,7 @@ public class FrameFuncionarioList {
 			dados[i][2] = f.getCargo();
 			i++;
 		}
-		
+
 		modelFuncionarios.setDataVector(dados, colunas);
 	}
 
