@@ -1,0 +1,6 @@
+codigo,titulo,descricao,dataInicial,prazo,dataConclusao,status,responsavel
+e7f8g9h0,Reunião de planejamento,Reunião com equipe para planejar sprint,2023-11-01,5,2023-11-06,CONCLUIDO,Joana Silva
+i1j2k3l4,Desenvolver login,Criar sistema de autenticação,2023-11-02,7,2023-11-03,EM_ANDAMENTO,Carlos Oliveira
+m5n6o7p8,Atualizar documentação,Revisar documentação da API,2023-11-03,3,2023-11-06,CONCLUIDO,Ana Souza
+30cde697,Mario atender Maria,resolver o problema constante de Maria,1969-09-14,15,1969,09,15,ENTREGUE,Mario Aparecido
+b2faa98a,Arrumar a sala,12:30,1969-09-14,1,1969-09-15,[PENDENTE],Carlos Oliveira
